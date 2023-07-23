@@ -1,0 +1,318 @@
+
+
+.jumbotron {
+    background-color: #F3CC09;
+    width: 65%;
+    min-width: 330px;
+    -moz-text-align-last: center;
+         text-align-last: center;
+    font-family: 'Montserrat';
+  }
+  
+  .jumbotron h3 {
+  
+  }
+  
+  .jumbotron button {
+    font-size: 15px;
+  }
+  
+  .jumbotron .btn-outline-light:hover,
+  .jumbotron .btn-outline-light:focus,
+  .jumbotron .btn-outline-light:active,
+  .jumbotron .btn-outline-light.active {
+
+  }
+  
+  .align-center {
+    margin: 20px auto;
+    margin-bottom: 30px;
+    text-align: -webkit-center;
+    text-align: -moz-center;
+    text-align: -ms-center;
+    text-align: -o-center;
+    -moz-text-align-last: left;
+         text-align-last: left;
+  }
+  
+  .card-title {
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+    font-size: 25px;
+    color: #3b3b3b;
+  }
+  
+  .form-card {
+    width: 80%;
+    min-width: 330px;
+    -webkit-box-shadow: 0px 0px 20px 1px #dadada;
+    box-shadow: 0px 0px 15px 1px #dadada;
+    border: none;
+    margin-top: 30px;
+    border-radius: 20px;
+    padding: 30px;
+  }
+  
+  @media (min-width: 768px) {
+    .form-card {
+      width: 100%;
+    }
+    .jumbotron {
+      width: 100%;
+    }
+  }
+  
+  @media (min-width: 991px) {
+    .form-card {
+      width: 60%;
+    }
+    .jumbotron {
+      width: 70%;
+    }
+  }
+  
+  @media (min-width: 1150px) {
+    .form-card {
+      width: 60%;
+    }
+    .jumbotron {
+      width: 65%;
+    }
+  }
+  
+  .form-card svg,
+  .input-group-text .bi {
+    color: #868686;
+  }
+  
+  .my-pd {
+    padding: 0.135rem 0.6243rem;
+  }
+  
+  .prefix-inp {
+    position: absolute;
+    left: 50px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    z-index: 99;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  #personInChargePhone {
+    padding-left: 40px;
+  }
+  
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  
+  .text-danger {
+    font-size: 12.5px;
+    padding-left: 3px;
+    padding-top: 3.5px;
+    margin-bottom: -7px;
+  }
+  
+  [type="submit"] {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  
+  .time {
+    max-width: -webkit-fit-content;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+  }
+  
+  td {
+    vertical-align: middle;
+  }
+  
+  .actions {
+    /* display: flex;
+  flex-wrap: wrap;
+  gap: 11px; */
+  }
+  
+  .delete {
+    padding: 0.25rem 0.6243rem;
+    font-size: 18px;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+    -webkit-align-self: end;
+    -ms-flex-item-align: end;
+    -ms-grid-row-align: end;
+    align-self: end;
+    max-width: -webkit-min-content;
+    max-width: -moz-min-content;
+    max-width: min-content;
+    margin-top: 10px;
+  }
+  
+  .row {
+    --bs-gutter-x: 0.5rem;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  
+  .btn-col {
+    -webkit-align-self: flex-end;
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+  }
+  
+  table thead th {
+    /* font-size: 20px; */
+    color: #3b3b3b;
+  }
+  
+  .scrollable {
+    overflow-x: scroll !important;
+    width: 100%;
+    position: relative;
+  }
+  
+  .scrollable::-webkit-scrollbar {
+    width: 0px !important;
+    height: 0px !important;
+  }
+  
+  .side-blur {
+    position: relative;
+  }
+  
+  .side-blur:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0px;
+    width: 32px;
+    right: -13px;
+    margin-top: -20px;
+    margin-bottom: -20px;
+    -webkit-box-shadow: inset -16px 0px 7px 8px white;
+    box-shadow: inset -16px 0px 7px 8px white;
+  }
+  
+  .side-blur:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0px;
+    width: 32px;
+    left: -13px;
+    margin-top: -20px;
+    margin-bottom: -20px;
+    z-index: 1;
+    -webkit-box-shadow: inset 16px 0px 7px 8px white;
+    box-shadow: inset 16px 0px 7px 8px white;
+  }
+  
+  /* .scrollable .btn{
+  z-index: -1;
+  } */
+  .Form-manage-btn {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+            justify-content: center;
+    gap: 10px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+            align-items: center;
+  }
+  
+  td, th {
+    word-wrap: break-word;
+    max-width: 150px;
+  }
+  
+  .no-break {
+    white-space: nowrap;
+  }
+  
+  .fade-in {
+    animation: fadeIn ease 1s;
+    -webkit-animation: fadeIn ease 1s;
+    -moz-animation: fadeIn ease 1s;
+    -o-animation: fadeIn ease 1s;
+    -ms-animation: fadeIn ease 1s;
+  }
+  
+  .fade-out {
+    animation: fadeOut ease 1s;
+    -webkit-animation: fadeOut ease 1s;
+    -moz-animation: fadeOut ease 1s;
+    -o-animation: fadeOut ease 1s;
+    -ms-animation: fadeOut ease 1s;
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @-webkit-keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  .spinner-border {
+    height: 20px;
+    width: 20px;
+    margin: auto 15.02px;
+    margin-bottom: -2px;
+  }
+  

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "phatakstatus-42349": {
+      "hosting": {
+        "PhatakApp": [
+          "phatakstatus-42349"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "phatakstatus-42349"
+  }
+}

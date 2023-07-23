@@ -1,0 +1,153 @@
+
+<div class="container px-lg-5 align-center ">
+    <div class="jumbotron mt-4 p-4 mx-lg-5 text-white rounded">
+      <h1 style="color: black ;">Manage Phataks</h1> 
+      <p style="color: black ;">You can easily manage railway crossings from this backend</p> 
+      <button style="color: black ;" type="button" class="btn btn-outline-light" (click)="showForm = !showForm">
+        {{ showForm ? 'Hide' : 'Show' }} Form
+      </button>
+    </div>
+  </div>
+  <div class="align-center {{!showForm ? 'side-blur':''}}">
+    <div class="cont">
+      <h5 class="card-title mb-1 mb-3 ps-3" *ngIf="!showForm">Phatak Lists</h5>
+      <div class="container mt-3 px-lg-5 scrollable" *ngIf="!showForm">
+    <!-- {{ phataksList | json }} -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Sr. No</th>
+          <th>Phatak Name</th>
+          <th>Incharge Name</th>
+          <th>Incharge Phone</th>
+          <th>Coordinates</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let phatak of phataksList; index as idx">
+          <td>{{ idx + 1 }}</td>
+          <td>{{ phatak.name }}</td>
+          <td>{{ phatak.personInChargeName }}</td>
+          <td>{{ phatak.personInChargePhone }}</td>
+          <td>{{ phatak.location.longitude }},
+            {{ phatak.location.latitude }}
+
+          </td>
+          <td>
+            <button type="button" class="btn btn-sm btn-primary mx-1" (click)="updatePhatak(phatak)">Update</button>
+            <button type="button" class="btn btn-sm btn-danger mx-1" (click)="deletePhatak(phatak.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="form-card card card-body " *ngIf="showForm">
+    <h2>Add New Phatak</h2>
+    <form [formGroup]="phatakForm" (ngSubmit)="addPhatakToFirebase()">
+      <div class="mb-3 mt-3">
+        <label for="name">Enter Phatak Name:</label>
+        <!-- <input type="text" class="form-control" id="phatakname" placeholder="Enter Name" name="name" formControlName="name"> -->
+        <div class="input-group">
+          <span class="input-group-text my-pd">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="19px" version="1.1" viewBox="0 0 510 560"  fill="currentColor" > <g> <path d="m124 448c0 15.465-12.535 28-28 28s-28-12.535-28-28 12.535-28 28-28 28 12.535 28 28"/> <path d="m404 364c-24.848 0-47.105 10.852-62.484 28h-49.516v-112.13l131.86 73.199 56.035-100.93-110.96-61.602 110.96-61.602-56.035-100.93-131.86 73.199v-73.199h-84v73.199l-131.86-73.199-56.031 100.93 110.96 61.602-110.96 61.602 56.035 100.93 131.86-73.199v112.13h-49.516c-15.379-17.148-37.637-28-62.484-28-46.391 0-84 37.609-84 84s37.609 84 84 84c41.613 0 76.066-30.285 82.738-70h29.262v70h84v-70h29.262c6.6719 39.715 41.125 70 82.738 70 46.391 0 84-37.609 84-84s-37.609-84-84-84zm0 140c-30.879 0-56-25.121-56-56s25.121-56 56-56 56 25.121 56 56-25.121 56-56 56zm-168 0v-239.67l14-7.7734 14 7.7734v239.67zm-140 0c-30.879 0-56-25.121-56-56s25.121-56 56-56 56 25.121 56 56-25.121 56-56 56zm79.117-84h32.883v14h-29.262c-0.80859-4.8203-2.0273-9.4922-3.6211-14zm-23.66-192.74 66.148-36.719-66.148-36.719-74.238-41.215 15.266-27.496 137.13 76.125 20.383 11.32 20.383-11.316 137.13-76.125 15.266 27.496-74.238 41.215-66.148 36.719 66.148 36.719 74.238 41.215-15.266 27.496-137.13-76.141-20.383-11.309-20.383 11.316-137.14 76.125-15.266-27.496zm112.54-171.26v60.742l-14 7.7734-14-7.7734v-60.742zm28 364h32.883c-1.5977 4.5078-2.8125 9.1797-3.625 14h-29.258z"/> <path d="m432 448c0 15.465-12.535 28-28 28s-28-12.535-28-28 12.535-28 28-28 28 12.535 28 28"/> </g> </svg>
+          </span>
+          <input type="text" name="phatak" placeholder="Shastri Nagar Railway Crossing" class="form-control" [ngClass]="{'is-invalid': input('name')?.invalid && (input('name').dirty || input('name').touched), 'is-valid': input('name')?.valid}" id="name" formControlName="name" required="true" [required]="true">
+      </div>
+      <div class="text-danger" *ngIf="input('name')?.invalid && (input('name').dirty || input('name').touched)">
+        <div *ngIf="input('name').hasError('required')">Phatak Name is Required</div>
+        <div *ngIf="phatakForm.get('name').hasError('minlength')">Phatak Name must be greater than 10 characters</div>
+ 
+      </div>
+      </div>
+      
+      <div class="mb-3 mt-3">
+        <label for="inchargename">Person In Charge Name:</label>
+        <div class="input-group">
+          <span class="input-group-text my-pd"><i class="bi bi-person-fill"></i></span>
+          <input type="text" name="name" placeholder="Rajesh kumar" class="form-control" id="personInChargeName" formControlName="personInChargeName" [ngClass]="{'is-invalid': input('personInChargeName')?.invalid && (input('personInChargeName').dirty || input('personInChargeName').touched), 'is-valid': input('personInChargeName')?.valid}" required>
+      </div>
+      <div class="text-danger" *ngIf="input('personInChargeName')?.invalid && (input('personInChargeName').dirty || input('personInChargeName').touched)">
+        <div *ngIf="input('personInChargeName').hasError('required')">Incharge Name is Required</div>
+        <!-- <div *ngIf="phatakForm.get('personInChargeName').hasError('pattern')">Phone Number must be of 10 digits</div> -->
+      </div>      </div>
+  
+      <div class="mb-3 mt-3">
+        <label for="inchargephone">Person In Charge Phone:</label>
+        <div class="input-group">
+          <span class="input-group-text my-pd"><i class="bi-geo-alt-fill"></i></span>
+         
+          <input type="number" name="phone" placeholder="8473593689" class="form-control" id="personInChargePhone" [ngClass]="{'is-invalid': input('personInChargePhone')?.invalid && (input('personInChargePhone').dirty || input('personInChargePhone').touched), 'is-valid': input('personInChargePhone')?.valid}" formControlName="personInChargePhone" required>
+      </div>
+      <div class="text-danger" *ngIf="input('personInChargePhone')?.invalid && (input('personInChargePhone').dirty || input('personInChargePhone').touched)">
+        <div *ngIf="input('personInChargePhone').hasError('required')">Phone Number is Required</div>
+        <div *ngIf="input('personInChargePhone').hasError('pattern')">Phone Number must be of 10 digits</div>
+      </div>      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Phatak Status</label>
+        <select class="form-select" id="status" formControlName="status" [ngClass]="{'is-invalid': input('status')?.invalid && (input('status').dirty || input('status').touched), 'is-valid': input('status')?.valid}" required>
+          <option value='' selected>Choose...</option>
+          <option value='0'>Open</option>
+          <option value='1'>Opening</option>
+          <option value='2'>Closing</option>
+          <option value='3'>Closed</option>
+        </select>
+        <div class="text-danger" *ngIf="input('status')?.invalid && (input('status').dirty || input('status').touched)">
+          <div *ngIf="input('status').hasError('required')">Phatak Status is Required</div>
+        </div>
+    </div>
+  
+    <div class="mb-3" formGroupName="location">
+      <label class="form-label">Location</label>
+      <div class="input-group">
+          <span class="input-group-text my-pd"><i class="bi bi-geo-alt-fill"></i></span>
+          <input type="number" placeholder="Latitude" name="latitude" class="form-control" min="0" step="any" formControlName="latitude" [ngClass]="{'is-invalid': input('location').get('latitude')?.invalid && ((input('location').get('latitude').dirty || input('location').get('latitude').touched) || (input('location').get('longitude').dirty || input('location').get('longitude').touched)), 'is-valid': input('location')?.get('latitude').valid}" required>
+          <input type="number" placeholder="Longitude" name="longitude" class="form-control" min="0" step="any" formControlName="longitude" [ngClass]="{'is-invalid': input('location').get('longitude')?.invalid && ((input('location').get('longitude').dirty || input('location').get('longitude').touched) || (input('location').get('latitude').dirty || input('location').get('latitude').touched)), 'is-valid': input('location')?.get('longitude').valid}" required>
+      </div>
+      <div class="text-danger" *ngIf="(input('location')?.invalid && (input('location').dirty || input('location').touched))">
+        <div *ngIf="input('location').get('latitude').hasError('required') && !input('location').get('longitude').hasError('required')">Latitude Coordinate is Required</div>
+        <div *ngIf="input('location').get('latitude').hasError('pattern')">Latitude Coordinate is not Valid</div>
+        <div *ngIf="input('location').get('longitude').hasError('required') && !input('location').get('latitude').hasError('required')">Longitude Coordinate is Required</div>
+        <div *ngIf="input('location').get('longitude').hasError('pattern')">Longitude Coordinate is not Valid</div>
+        <div *ngIf="input('location').get('longitude').hasError('required') && input('location').get('latitude').hasError('required')">Both Coordinates are Required</div>
+      </div>
+  </div>
+  
+    <div class="mb-3">
+      <label for="imageURL" class="form-label">Phatak Image</label>
+      <input type="file" name="image" class="form-control" id="imageURL" (change)="selectImage($event)">
+  </div>
+  
+      <div class="row">
+        <div class="col-12">
+          <div class="d-flex justify-content-between">
+            <h5>Timings</h5>
+            <button type="button" style="background-color: #F3CC09; color: black;"  class="btn btn-primary btn-sm" (click)="addTimingDetailsToArray()">Add Timing</button>
+          </div>
+        </div>
+        <div class="col-12 my-2" formArrayName="timings" *ngFor="let _ of getTimingsArrayFromPhatakForm().controls; index as idx">
+          <div formGroupName="idx" class="row">
+            <div class="col">
+              <label for="name">Train Name</label>
+              <input class="form-control" type="text" name="train" id="train" formControlName="train">
+            </div>
+            <div class="col">
+              <label for="trafficStatus">Traffic Status</label>
+              <input class="form-control" type="text" name="trafficStatus" id="trafficStatus" formControlName="trafficStatus">
+            </div>
+            <div class="col">
+              <label for="time">Time</label>
+              <input class="form-control" type="datetime-local" name="time" id="time" formControlName="time">
+            </div>
+            <button type="button" class="btn btn-sm btn-danger col mt-3" (click)="removeTimingDetailsToArray(idx)">Remove</button>
+            <!-- <div class="col d-flex justify-content-center align-items-center">
+            </div> -->
+          </div>
+        </div>
+      </div>
+  
+      <button type="submit" style="background-color: #F3CC09; color: black;" class="btn btn-primary mt-3 ">Add Phatak</button>
+    </form>
+  </div>
