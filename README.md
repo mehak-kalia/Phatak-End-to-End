@@ -8,7 +8,7 @@
 
 <h2>Project Screenshots:</h2>
 
-<img src="https://github.com/mehak-kalia/Phatak-End-to-End/blob/005677439342d2936ec87f50e6326750a0faa72d/screenshots/Screenshot%202023-07-27%20at%2010.08.42%20PM.png" alt="project-screenshot" width="400" height="400/">
+<img src="https://github.com/mehak-kalia/Phatak-End-to-End/blob/005677439342d2936ec87f50e6326750a0faa72d/screenshots/Screenshot%202023-07-27%20at%2010.08.42%20PM.png" alt="project-screenshot" width="1000" height="600/">
 
 <img src="" alt="project-screenshot" width="400" height="400/">
 
